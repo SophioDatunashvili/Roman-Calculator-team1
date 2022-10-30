@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-
+//ფუნქცია ანიჭებს რომაულ რიცხვებს არაბულ მნიშვნელობას
 int arabicValue(char roman) 
 {
     switch(roman) 
@@ -17,7 +17,7 @@ int arabicValue(char roman)
     return 0;
 }
 
-
+// ფუნქციას გადაჰყავს რომაული რიცხვები არაბულში
 int romanToInt(string romanNumber)
 {
     int arabic = 0;
@@ -37,27 +37,28 @@ int romanToInt(string romanNumber)
     }
     return arabic;
 }
-    
-int calculator(string num, int result, string op) {
+
+ //ამ ფუნქციით მომხმარებელს შემოაქვს რომაული რიცხვები და საბოლოოდ ითვლის მათემატიკური ოპერაციების შედეგს   
+int calculator(string num, int result, string operators) {
 
     cout << "Enter Roman Number: ";
     cin >> num;
             
-    if (op=="+") {
+    if (operators=="+") {
         result=result+romanToInt(num);
-    } else if (op=="-"){
+    } else if (operators=="-"){
         result=result-romanToInt(num);
-    } else if (op=="*") {
+    } else if (operators=="*") {
         result=result*romanToInt(num);
-    } else if(op=="/") {
+    } else if(operators=="/") {
         result=result/romanToInt(num);
     } else {
-        cout << "invalid operator";
+        cout << "invalid operator"<<endl;
     }
     return result;
 }
 
-    
+ // ფუნქციას გადაჰყავს არაბული რიცხვები რომაულში   
 string intToRoman(int arabic) {
     if (arabic < 0) {
         arabic = -arabic;
@@ -83,7 +84,7 @@ string intToRoman(int arabic) {
 
 int main(){
 
-    string op;
+    string operators;
     string romanNumber;
 
     cout<<"Enter Roman Number: ";
@@ -94,12 +95,12 @@ int main(){
     while(true) {
         string num;
         cout<<"enter operator: ";
-        cin>>op;
+        cin>>operators;
     
-        if (op == "exit"){
+        if (operators == "exit"){
             break;
         } else{
-             result = calculator(num, result, op);
+             result = calculator(num, result, operators);
         }
     }
     cout << intToRoman(result) << endl;
